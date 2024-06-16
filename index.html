@@ -88,24 +88,27 @@ flowie<!DOCTYPE html>
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">DPMesh: Exploiting Diffusion Prior for Occluded Human Mesh Recovery</h1>
+          <h1 class="title is-1 publication-title">FlowIE: Exploiting Diffusion Prior for Occluded Human Mesh Recovery</h1>
           <div class="is-size-4 publication-authors">
             <span class="author-block">
-              <a href="https://eternalevan.github.io/">Yixuan Zhu</a><sup>*, 1</sup>,</span>
-            <span class="author-block">
-              <a href="https://rammusleo.github.io/">Ao Li</a><sup>*, 2</sup>,</span>
-            <span class="author-block">
-              <a href="https://andytang15.github.io/">Yansong Tang</a><sup>&#10013, 2</sup>,
+              <a href="https://eternalevan.github.io/">Yixuan Zhu</a><sup>*, 1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://wl-zhao.github.io/">Wenliang Zhao</a><sup>1</sup>,
+              <a href="https://wl-zhao.github.io/">Wenliang Zhao</a><sup>*, 1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=en&authuser=1">Jiwen Lu</a><sup>1</sup>,
+              <a href="https://rammusleo.github.io/">Ao Li</a><sup>, 2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://andytang15.github.io/">Yansong Tang</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1">Jie Zhou</a><sup>1</sup>,
             </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=en&authuser=1">Jiwen Lu</a><sup>&#10013, 1</sup>,
+            </span>
+
           </div>
 
           <div class="is-size-4 publication-authors">
@@ -117,7 +120,7 @@ flowie<!DOCTYPE html>
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="https://arxiv.org/pdf/2406.00508"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -126,7 +129,7 @@ flowie<!DOCTYPE html>
                 </a>
               </span>
               <span class="link-block">
-                <a href=""
+                <a href="https://arxiv.org/abs/2406.00508"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -146,7 +149,7 @@ flowie<!DOCTYPE html>
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/EternalEvan/DPMesh"
+                <a href="https://github.com/EternalEvan/FlowIE"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -172,7 +175,7 @@ flowie<!DOCTYPE html>
   </div>
 </section>
 
-<div class="columns is-centered">
+<!-- <div class="columns is-centered">
   <video id="demo1" autoplay controls muted loop playsinline height="80%" width="80%" center>
   <source src="./static/videos/demo1.mp4"
           type="video/mp4">
@@ -189,7 +192,7 @@ flowie<!DOCTYPE html>
   <source src="./static/videos/demo3.mp4"
           type="video/mp4">
 </video>
-</div>
+</div> -->
 
 
 <!-- <section class="hero teaser">
@@ -219,14 +222,16 @@ flowie<!DOCTYPE html>
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The recovery of occluded human meshes presents challenges for current methods due to the difficulty in extracting effective image features under severe occlusion.
+            Image enhancement holds extensive applications in real-world scenarios due to complex environments and limitations of imaging devices. 
+            Conventional methods are often constrained by their tailored models, resulting in diminished robustness when confronted with challenging degradation conditions. In response, we propose FlowIE, a simple yet highly effective flow-based image enhancement framework that estimates straight-line paths from an elementary distribution to high-quality images. 
           </p>
           <p>
-            In this paper, we introduce DPMesh, an innovative framework for occluded human mesh recovery that capitalizes on the profound diffusion prior about object structure and spatial relationships embedded in a pre-trained text-to-image diffusion model.
-            Unlike previous methods reliant on conventional backbones for vanilla feature extraction, DPMesh seamlessly integrates the pre-trained denoising U-Net with potent knowledge as its image backbone and performs a single-step inference to provide occlusion-aware information. To enhance the perception capability for occluded poses, DPMesh incorporates well-designed guidance via condition injection, which produces effective controls from 2D observations for the denoising U-Net. Furthermore, we explore a dedicated noisy key-point reasoning approach to mitigate disturbances arising from occlusion and crowded scenarios. This strategy fully unleashes the perceptual capability of the diffusion prior, thereby enhancing accuracy. 
+            Unlike previous diffusion-based methods that suffer from long-time inference, FlowIE constructs a linear many-to-one transport mapping via conditioned rectified flow. The rectification straightens the trajectories of probability transfer, accelerating inference by an order of magnitude. 
+            This design enables our FlowIE to fully exploit rich knowledge in the pre-trained diffusion model, rendering it well-suited for various real-world applications. 
+            Moreover, we devise a faster inference algorithm, inspired by Lagrange's Mean Value Theorem, harnessing midpoint tangent direction to optimize path estimation, ultimately yielding visually superior results. 
           </p>
           <p>
-            Extensive experiments affirm the efficacy of our framework, as we outperform state-of-the-art methods on both occlusion-specific and standard datasets. The persuasive results underscore its ability to achieve precise and robust 3D human mesh recovery, particularly in challenging scenarios involving occlusion and crowded scenes.
+            Thanks to these designs, our FlowIE adeptly manages a diverse range of enhancement tasks within a concise sequence of fewer than 5 steps. Our contributions are rigorously validated through comprehensive experiments on synthetic and real-world datasets, unveiling the compelling efficacy and efficiency of our proposed FlowIE.
           </p>
         </div>
       </div>
@@ -243,20 +248,21 @@ flowie<!DOCTYPE html>
     <!--/ Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Visual Performances</h2>
-        3DPW
-        <img src="./static/images/performance.png">
-        OC-Human
-        <img src="./static/images/ochuman.png">
-        CrowdPose
-        <img src="./static/images/crowdpose.png">
+        <h2 class="title is-3">Results</h2>
+        Blind Face Restoration
+        <img src="./static/images/bfr.png">
+        Blind Super Resolution
+        <img src="./static/images/bsr.png">
+        <img src="./static/images/bsr2.png">
+        <!-- CrowdPose
+        <img src="./static/images/crowdpose.png"> -->
       </div>
     </div>
 
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Results on Occlusion Benchmarks</h2>
-        <img src="./static/images/table.png">
+        <h2 class="title is-3">Ablation Study</h2>
+        <img src="./static/images/ablation.png">
       </div>
     </div>
 
@@ -327,11 +333,12 @@ flowie<!DOCTYPE html>
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{yixuan2024dpmesh,
-  author    = {Yixuan Zhu, Ao Li, Yansong Tang, Wenliang Zhao, Jie Zhou, Jiwen Lu},
-  title     = {DPMesh: Exploiting Diffusion Prior for Occluded Human Mesh Recovery},
-  journal   = {CVPR},
-  year      = {2024},
+    <pre><code>@inproceedings{zhu2024flowie,
+  title={FlowIE: Efficient Image Enhancement via Rectified Flow},
+  author={Zhu, Yixuan and Zhao, Wenliang and Li, Ao and Tang, Yansong and Zhou, Jie and Lu, Jiwen},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={13--22},
+  year={2024}
 }</code></pre>
   </div>
 </section>
